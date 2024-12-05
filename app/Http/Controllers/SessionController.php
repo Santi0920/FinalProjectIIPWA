@@ -22,20 +22,17 @@ class SessionController extends Controller
 
         $user = auth()->user();
 
-        if ($user->role == 'Server' || $user->role == 'Chef' || $user->role == 'Busboy') {
+        if ($user->role == 'Admin') {
             $usuarioActual = Auth::user();
-
-
-            return redirect()->route('employee');
-
-
-        } elseif ($user->role == 'Admin') {
-            $usuarioActual = Auth::user();
-
 
             return redirect('adminindex');
+
+
+
         }else{
-            return redirect()->route('loginindex');
+
+            $usuarioActual = Auth::user();
+            return redirect()->route('employee');
         }
 
 

@@ -50,7 +50,7 @@
         </div>
         <div class="table-container">
             <h3 class="fw-bold">McDonald's Employees</h3>
-            <table>
+            <table class="">
                 <thead>
                     <tr>
                         <th>ID</th>

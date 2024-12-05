@@ -30,7 +30,7 @@
         <div class="header">
             <h2 class="fw-bold"><img class="" src="img/logo.png" width="120">Employee Interface</h2>
             <div class="welcome-logout">
-                <h2 class="me-3">Welcome <strong>{{ auth()->user()->name }}. </strong> Role: <strong>{{ auth()->user()->role }}</strong></h2>
+                <h2 class="me-3">Welcome <strong>{{ auth()->user()->name }} </strong> Role: <strong>{{ auth()->user()->role }}</strong></h2>
                 <a href="{{ route('login.destroy') }}"><button class="logout-btn h2 fw-bold">Logout</button></a>
             </div>
         </div>
@@ -39,9 +39,10 @@
                 <div class="d-flex flex-column align-items-center p-4 bg-light rounded">
                     <!-- Employee Header -->
                     <div class="text-center">
-                        <img src="img/pic.jpeg" alt="Employee Avatar" class="rounded-circle mb-2" style="width: 300px; height: 200px">
+                        <img src="img/pic.jpeg" alt="Employee Avatar" class="rounded-circle mb-2" style="width: 300px; height: 250px">
                         <h5 class="mt-2 fs-1 fw-bold">{{ auth()->user()->name }} - {{ auth()->user()->nationality }} <span class="ms-2">
                         @php
+                        $flag = "";
                             if (auth()->user()->nationality == 'Colombia'){
                                 $flag = "/img/colombia.png";
                             }else if(auth()->user()->nationality == 'Canada'){
@@ -50,6 +51,8 @@
                                 $flag = "/img/ecuador.png";
                             }else if(auth()->user()->nationality == 'Peru'){
                                 $flag = "/img/peru.webp";
+                            }else if(auth()->user()->nationality == 'Japan'){
+                                $flag = "/img/japan.png";
                             }
                         @endphp
                         <img src="{{$flag}}" alt="" width="50px" height="30px"></span></h5>
@@ -81,13 +84,13 @@
                             }
                         @endphp
 
-                        {{ $performance ?? 'NA' }} (Grade: {{ $grade }})</strong></div>
+                        (Grade: {{ $grade }})</strong></div>
                         <div><strong>Salary:</strong> {{ auth()->user()->salary }} / H</div>
                         <div><strong>Bonus:</strong> {{ auth()->user()->bonus }} CAD</div>
                     </div>
                     <div class="d-flex justify-content-between w-100 px-3">
                         <div><strong>Total hours worked:</strong> {{ auth()->user()->hoursworked }}</div>
-                        <div><strong>Total:</strong> {{ (auth()->user()->salary * auth()->user()->hoursworked)  + auth()->user()->bonus }} CAD</div>
+                        <div><strong>Total:</strong> {{ (auth()->user()->salary * auth()->user()->hoursworked) + auth()->user()->bonus }} CAD</div>
                     </div>
 
                     <!-- Schedule Table -->

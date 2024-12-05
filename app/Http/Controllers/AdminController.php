@@ -34,6 +34,7 @@ class AdminController extends Controller
             'nationality' => $request->addNationality,
         ]);
 
+
         return redirect()->to('/adminindex')->with('correcto', 'The employee '.$request->addName .' with ID '.$idinsertado .'  was successfully created!');
     }
 
@@ -56,7 +57,6 @@ class AdminController extends Controller
     }
 
     public function delete(Request $request,$id, $name){
-        $id = $id;
 
         DB::table('users')
         ->where('id', $id)
@@ -71,8 +71,6 @@ class AdminController extends Controller
 
 
     public function employeemonth(Request $request,$id, $name){
-        $id = $id;
-
         DB::table('users')
         ->update([
             'employmonth' => 0,
